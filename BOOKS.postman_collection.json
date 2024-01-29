@@ -1,0 +1,94 @@
+{
+	"info": {
+		"_postman_id": "515e5cef-19f7-4f39-b3a6-beafda2314fd",
+		"name": "BOOKS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "12273029"
+	},
+	"item": [
+		{
+			"name": "book list",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:3000/api/v1/book"
+			},
+			"response": []
+		},
+		{
+			"name": "book by  id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://127.0.0.1:3000/api/v1/book/1"
+			},
+			"response": []
+		},
+		{
+			"name": "book by jenis",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://127.0.0.1:3000/api/v1/book/jenis/Novel"
+			},
+			"response": []
+		},
+		{
+			"name": "book update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 6,\n    \"name\": \"Anime R & D\",\n    \"type\": \"Comic\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:3000/api/v1/book/1"
+			},
+			"response": []
+		},
+		{
+			"name": "book post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Anime First\",\n    \"type\": \"Comic\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:3000/api/v1/book"
+			},
+			"response": []
+		},
+		{
+			"name": "book delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://127.0.0.1:3000/api/v1/book/4"
+			},
+			"response": []
+		}
+	]
+}
