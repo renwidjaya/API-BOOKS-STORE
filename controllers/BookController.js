@@ -1,5 +1,13 @@
+/**
+ * @author Rendi Widjaya
+ */
 const books = require("../models/books");
 
+/**
+ * @error Response
+ * @param {*} res
+ * @param {*} error
+ */
 const handleErrorResponse = (res, error) => {
   res.json({
     status: "failed",
@@ -8,6 +16,12 @@ const handleErrorResponse = (res, error) => {
   });
 };
 
+/**
+ * @books index
+ * @param {*} req
+ * @param {*} res
+ * @returns
+ */
 const booksIndex = (req, res) => {
   try {
     const dataBaru = books;
@@ -30,6 +44,12 @@ const booksIndex = (req, res) => {
   }
 };
 
+/**
+ * @book BY ID
+ * @param {*} req
+ * @param {*} res
+ * @returns
+ */
 const bookById = (req, res) => {
   try {
     const idBooks = req.params.id;
@@ -53,6 +73,12 @@ const bookById = (req, res) => {
   }
 };
 
+/**
+ * @book BY JENIS
+ * @param {*} req
+ * @param {*} res
+ * @returns
+ */
 const bookByJenis = (req, res) => {
   try {
     const jenis = req.params.jenis;
@@ -86,6 +112,12 @@ const bookByJenis = (req, res) => {
   }
 };
 
+/**
+ * @book UPDATE
+ * @param {*} req
+ * @param {*} res
+ * @returns
+ */
 const bookUpdate = (req, res) => {
   try {
     const idBooks = req.params.id;
@@ -126,6 +158,12 @@ const bookUpdate = (req, res) => {
   }
 };
 
+/**
+ * @book STORE
+ * @param {*} req
+ * @param {*} res
+ * @returns
+ */
 const bookStore = (req, res) => {
   try {
     const idBooks = books.length + 1;
@@ -157,6 +195,12 @@ const bookStore = (req, res) => {
   }
 };
 
+/**
+ * @book DESTROY
+ * @param {*} req
+ * @param {*} res
+ * @returns
+ */
 const bookDestroy = (req, res) => {
   try {
     const idBooks = req.params.id;
@@ -190,6 +234,9 @@ const bookDestroy = (req, res) => {
   }
 };
 
+/**
+ * @export MODULE
+ */
 module.exports = {
   booksIndex,
   bookById,
