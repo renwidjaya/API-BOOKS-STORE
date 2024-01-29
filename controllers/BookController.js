@@ -1,33 +1,40 @@
 const books = require("../models/books");
 
-const getAllData = (req, res) => {
+const handleErrorResponse = (res, error) => {
+  res.json({
+    status: "failed",
+    message: error,
+    data: [],
+  });
+};
+
+const booksIndex = (req, res) => {
   try {
-    const databaru = books;
-    if (databaru.length === 0) {
+    const dataBaru = books;
+
+    if (dataBaru.length === 0) {
       return res.json({
         status: "failed",
         message: "Data Tidak Ditemukan",
         data: [],
       });
     }
+
     return res.json({
       status: "Success",
       message: "Berhasil Menampilkan Data",
       data: books,
     });
   } catch (error) {
-    res.json({
-      status: "failed",
-      message: error,
-      data: [],
-    });
+    handleErrorResponse(res, error);
   }
 };
 
-const getDataById = (req, res) => {
+const bookById = (req, res) => {
   try {
     const idBooks = req.params.id;
     const filterData = books.filter((i) => i.id === parseInt(idBooks));
+
     if (filterData.length === 0) {
       return res.json({
         status: "failed",
@@ -35,24 +42,22 @@ const getDataById = (req, res) => {
         data: [],
       });
     }
+
     return res.json({
       status: "Success",
       message: "Berhasil Menampilkan Data",
       data: filterData,
     });
   } catch (error) {
-    res.json({
-      status: "failed",
-      message: error,
-      data: [],
-    });
+    handleErrorResponse(res, error);
   }
 };
 
-const getDataByJenis = (req, res) => {
+const bookByJenis = (req, res) => {
   try {
     const jenis = req.params.jenis;
     let dataBaru = [];
+
     books.find((i) => {
       if (i.type === jenis) {
         dataBaru.push({
@@ -62,6 +67,7 @@ const getDataByJenis = (req, res) => {
         });
       }
     });
+
     if (dataBaru.length === 0) {
       return res.json({
         status: "failed",
@@ -69,25 +75,23 @@ const getDataByJenis = (req, res) => {
         data: [],
       });
     }
+
     return res.json({
       status: "Success",
       message: "Berhasil Menampilkan Data",
       data: dataBaru,
     });
   } catch (error) {
-    res.json({
-      status: "failed",
-      message: error,
-      data: [],
-    });
+    handleErrorResponse(res, error);
   }
 };
 
-const updateDataById = (req, res) => {
+const bookUpdate = (req, res) => {
   try {
     const idBooks = req.params.id;
     const nameBook = req.body.name;
     let dataBaru = [];
+
     books.map((i) => {
       if (i.id !== parseInt(idBooks)) {
         dataBaru.push({
@@ -103,6 +107,7 @@ const updateDataById = (req, res) => {
         });
       }
     });
+
     if (dataBaru.length === 0) {
       return res.json({
         status: "failed",
@@ -110,26 +115,24 @@ const updateDataById = (req, res) => {
         data: [],
       });
     }
+
     return res.json({
       status: "Success",
       message: "Berhasil Mengubah Data",
       data: dataBaru,
     });
   } catch (error) {
-    res.json({
-      status: "failed",
-      message: error,
-      data: [],
-    });
+    handleErrorResponse(res, error);
   }
 };
 
-const postData = (req, res) => {
+const bookStore = (req, res) => {
   try {
     const idBooks = books.length + 1;
     const nameBook = req.body.name;
     const typeBook = req.body.type;
     let dataBaru = books;
+
     if (dataBaru.length === 0) {
       return res.json({
         status: "failed",
@@ -137,29 +140,28 @@ const postData = (req, res) => {
         data: [],
       });
     }
+
     dataBaru.push({
       id: idBooks,
       name: nameBook,
       type: typeBook,
     });
+
     return res.json({
       status: "Success",
       message: "Berhasil Membuat Data",
       data: dataBaru,
     });
   } catch (error) {
-    res.json({
-      status: "failed",
-      message: error,
-      data: [],
-    });
+    handleErrorResponse(res, error);
   }
 };
 
-const deleteDataById = (req, res) => {
+const bookDestroy = (req, res) => {
   try {
     const idBooks = req.params.id;
     let dataBaru = [];
+
     books.map((i) => {
       if (i.id !== parseInt(idBooks)) {
         dataBaru.push({
@@ -169,6 +171,7 @@ const deleteDataById = (req, res) => {
         });
       }
     });
+
     if (dataBaru.length === 0) {
       return res.json({
         status: "failed",
@@ -176,25 +179,22 @@ const deleteDataById = (req, res) => {
         data: [],
       });
     }
+
     return res.json({
       status: "Success",
       message: "Berhasil Menghapus Data",
       data: dataBaru,
     });
   } catch (error) {
-    res.json({
-      status: "failed",
-      message: error,
-      data: [],
-    });
+    handleErrorResponse(res, error);
   }
 };
 
 module.exports = {
-  getAllData,
-  getDataById,
-  getDataByJenis,
-  updateDataById,
-  postData,
-  deleteDataById,
+  booksIndex,
+  bookById,
+  bookByJenis,
+  bookUpdate,
+  bookStore,
+  bookDestroy,
 };
