@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/renwidjaya/API-BOOKS-STORE.git",
-  "author": "Rendi <renwidjaya@ecampus.ut.ac.id>",
+  "author": "Rendi Widjaya <renwidjaya@ecampus.ut.ac.id>",
   "license": "MIT",
   "dependencies": {
     "dotenv": "^16.0.2",
